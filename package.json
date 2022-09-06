@@ -12,7 +12,9 @@
   "description": "Organize a gift list and never get the same gift again.",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^16.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
