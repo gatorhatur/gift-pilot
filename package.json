@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.5",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.4"
+  },
+  "name": "gift-pilot",
+  "description": "Organize a gift list and never get the same gift again.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatorhatur/gift-pilot.git"
+  },
+  "author": "\"Max Kottong, Max Taylor, Mateus Valedjao, Brandon Davis\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gatorhatur/gift-pilot/issues"
+  },
+  "homepage": "https://github.com/gatorhatur/gift-pilot#readme"
+}
