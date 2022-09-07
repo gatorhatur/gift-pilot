@@ -44,5 +44,6 @@ WHEN I click follow user
 
 THEN they appear in the friends list section of my dashboard
 
+WHEN I click profile
 
-
+THEN I can update my information and what events I observe
