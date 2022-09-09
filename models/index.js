@@ -50,7 +50,7 @@ Purchase.belongsTo(User, {
 
 // list items can be purchased once
 ListItem.belongsTo(Purchase, {
-	foreignKey: "listItem_id"
+	foreignKey: "id"
 })
 
 // each purchase unique to a list item

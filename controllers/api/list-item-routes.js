@@ -4,11 +4,12 @@ const { ListItem, Purchase, User } = require('../../models');
 
 //GET / ALL
 router.get('/', (req, res) => {
-    listItem.findAll({
+    ListItem.findAll({
         include: [{
             model: Purchase, include: [{
-                model: User
+                model: User,
             }]
+            
         }]
     })
         .then(result => res.json(result))
@@ -30,7 +31,8 @@ router.post('/', async (req, res) => {
 */
     const exists = await ListItem.findOne({
         where: {
-            user_id: res.session.user_id,
+            // user_id: res.session.user_id,
+            user_id: req.body.user_id,
             item_desc: req.body.item_desc
         }
     })
@@ -52,7 +54,8 @@ router.post('/', async (req, res) => {
         item_desc: req.body.item_desc,
         item_url: req.body.item_url,
         item_img_url: img_url,
-        user_id: req.session.user_id
+        user_id: req.body.user_id
+        // user_id: req.session.user_id
     })
         .then(createData => res.json(createData))
         .catch(err => {
@@ -98,7 +101,8 @@ router.post('/purchase/:id', async (req, res) => {
 
     Purchase.create({
         listItem_id: req.params.id,
-        user_id: req.session.user_id
+        // user_id: req.session.user_id
+        user_id: req.body.user_id
     })
         .then(createData => res.json(createData))
         .catch(err => {
