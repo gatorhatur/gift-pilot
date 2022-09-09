@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, List, Purchase } = require("../../models");
+const { User, ListItem, Purchase } = require("../../models");
 
 router.get("/", (req, res) => {
   User.findAll()
@@ -13,6 +13,31 @@ router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
     where: { id: req.params.id },
+    include: [{ model: ListItem, include: [{ model: Purchase }] }],
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "could not find user with this id" });
+        return;
+      }
+      res.status(200).json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+router.get("/dashboard", (req, res) => {
+  User.findOne({
+    where: { id: req.session.user_id },
+    include: [{ model: ListItem }],
+  });
+});
+router.get("/:id", (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: { id: req.params.id },
+    include: [{ model: ListItem }],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -78,32 +103,29 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
-router.put("/:id", (req, res) => {
-  User.update(req.body, { individualHooks: true, where: { id: req.params.id } })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "no user found with this id" });
-        return;
-      }
-      res.json(dbUserData);
+router.get("/friends", (req, res) => {
+  Friend.findAll({
+    where: { user_id: req.session.user_id },
+    include: [{ model: User }],
+  })
+    .then((dbdata) => {
+      res.status(200).json(dbdata);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
-router.delete("/:id", (req, res) => {
-  User.destroy({ where: { id: req.params.id } })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "no user found with this id" });
-        return;
-      }
-      res.json(dbUserData);
-    })
+
+router.post("/friends/:id", (req, res) => {
+  Friend.bulkCreate(
+    { user_id: req.session.user_id, friend_id: req.params.id },
+    { user_id: req.params.id, friend_id: req.session.user_id }
+  )
+    .then((dbData) => res.status(200).json(dbData))
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 
