@@ -4,7 +4,7 @@ async function newFormHandler(event) {
     const item_desc = document.querySelector('input[name="item_desc"]').value;
     const item_img_url = document.querySelector('input[name="item_img_url"]').value
 
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/gifts`, {
         method: 'POST',
         body: JSON.stringify({
             item_desc,
