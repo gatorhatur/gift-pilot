@@ -1,0 +1,29 @@
+<section>
+    <h2>Create New Gift</h2>
+
+    <form class="new-gift-form">
+        <div>
+            <label for="gift-title">Title</label>
+            <input type="text" id="gift-title" name="gift-title" />
+        </div>
+        <div>
+            <label for="gift-url">URL</label>
+            <input id="gift-url" name="gift-url" />
+        </div>
+        <button type="submit" class="btn">Create</button>
+    </form>
+</section>
+
+{{if gifts.length}}
+<section>
+    <h2>Your List</h2>
+    {{each gifts as |gift|}}
+        {{> gift-info gift}}
+        <br />
+        <button type="submit" class="delete-gift-btn btn">Delete Gift</button>
+    {{/each}}
+</section>
+{{/if}}
+
+<script src="/javascript/add-gift.js"></script>
+<script src="/javascript/delete-post.js"></script>
