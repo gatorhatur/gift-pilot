@@ -1,7 +1,9 @@
 const { FriendList, ListItem, Purchase, User } = require("../models");
-
-function seed() {
-  User.bulkCreate(
+const sequelize = require("../config/connection");
+async function seed() {
+  console.log("seeding...");
+  await sequelize.sync({ force: true });
+  await User.bulkCreate([
     {
       username: "user1",
       email: "user1@user.com",
@@ -21,9 +23,9 @@ function seed() {
       username: "user4",
       email: "user4@user.com",
       password: "user4roolz",
-    }
-  );
-  ListItem.bulkCreate(
+    },
+  ]);
+  await ListItem.bulkCreate([
     {
       item_desc: "gift item 1",
       item_url: "https://google.com",
@@ -89,9 +91,9 @@ function seed() {
       item_url: "https://google.com",
       item_img_url: "https://placeholder.pics/svg/300",
       user_id: 4,
-    }
-  );
-  FriendList.bulkCreate(
+    },
+  ]);
+  await FriendList.bulkCreate([
     {
       user_id: 1,
       friend_id: 2,
@@ -107,9 +109,9 @@ function seed() {
     {
       user_id: 4,
       friend_id: 3,
-    }
-  );
-  Purchase.bulkCreate(
+    },
+  ]);
+  await Purchase.bulkCreate([
     {
       listItem_id: 1,
       user_id: 1,
@@ -129,7 +131,9 @@ function seed() {
     {
       listItem_id: 7,
       user_id: 1,
-    }
-  );
+    },
+  ]);
+  console.log("done seeding");
+  process.exit(0);
 }
 seed();
