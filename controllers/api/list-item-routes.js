@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     ListItem.findAll({
         include: [{
             model: Purchase, include: [{
-                model: User,
+                model: User, attributes: ['username']
             }]
             
         }]
@@ -31,8 +31,8 @@ router.post('/', async (req, res) => {
 */
     const exists = await ListItem.findOne({
         where: {
-            // user_id: res.session.user_id,
-            user_id: req.body.user_id,
+            user_id: res.session.user_id,
+            //user_id: req.body.user_id,
             item_desc: req.body.item_desc
         }
     })
@@ -54,8 +54,8 @@ router.post('/', async (req, res) => {
         item_desc: req.body.item_desc,
         item_url: req.body.item_url,
         item_img_url: img_url,
-        user_id: req.body.user_id
-        // user_id: req.session.user_id
+        //user_id: req.body.user_id
+        user_id: req.session.user_id
     })
         .then(createData => res.json(createData))
         .catch(err => {
@@ -86,9 +86,12 @@ router.delete('/:id', (req, res) => {
 //POST /purchase
 router.post('/purchase/:id', async (req, res) => {
     const purchased = await Purchase.findOne({
-        where: req.params.id
+        where: {
+            id: req.params.id
+        }
     })
         .then(response => {
+            console.log(response)
             if (!response) {
                 return false;
             }
@@ -96,13 +99,14 @@ router.post('/purchase/:id', async (req, res) => {
         })
         
     if (purchased) {
-        res.status(400).json({message: 'This item has already been purchased by someone else'})
+        res.status(400).json({ message: 'This item has already been purchased by someone else' })
+        return;
     }
 
     Purchase.create({
         listItem_id: req.params.id,
-        // user_id: req.session.user_id
-        user_id: req.body.user_id
+        user_id: req.session.user_id
+        //user_id: req.body.user_id
     })
         .then(createData => res.json(createData))
         .catch(err => {
@@ -112,9 +116,10 @@ router.post('/purchase/:id', async (req, res) => {
 })
 
 //DELETE /purchase/:id
+//The id is the id of the current listItem
 router.delete('/purchase/:id', (req, res) => {
     Purchase.destroy({
-    where: {id: req.params.id}
+    where: {list_item_id: req.params.id}
   })
     .then(destroyData => {
       if (!destroyData) {
