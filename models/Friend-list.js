@@ -19,6 +19,14 @@ FriendList.init(
 				key: "id",
 			},
 		},
+		friend_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			references: {
+				model: "user",
+				key: "id",
+			},
+		},
 	},
 	{
 		sequelize,
@@ -28,3 +36,5 @@ FriendList.init(
 		name: "friend_list",
 	}
 );
+
+module.exports = FriendList;

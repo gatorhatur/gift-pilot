@@ -36,3 +36,5 @@ Purchase.init(
 		name: "purchase",
 	}
 );
+
+module.exports = Purchase;

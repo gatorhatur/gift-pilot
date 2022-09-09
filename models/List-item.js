@@ -17,19 +17,11 @@ ListItem.init(
 		item_url: {
 			type: DataTypes.STRING,
 			validate: {
-                isUrl: true,
-            },
-        },
-        item_img_url: {
-            type: DataTypes.STRING,
-        },
-		user_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			references: {
-				model: "user",
-				key: "id",
+				isUrl: true,
 			},
+		},
+		item_img_url: {
+			type: DataTypes.STRING,
 		},
 	},
 	{
@@ -40,3 +32,5 @@ ListItem.init(
 		name: "list_item",
 	}
 );
+
+module.exports = ListItem;

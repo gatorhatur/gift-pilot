@@ -36,3 +36,5 @@ SubbedEvent.init(
 		name: "subbed_event",
 	}
 );
+
+module.exports = SubbedEvent;

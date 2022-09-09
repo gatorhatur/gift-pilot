@@ -22,8 +22,8 @@ User.init(
 			allowNull: false,
 			validate: {
 				isEmail: true,
-            },
-            isUnique: true
+			},
+			isUnique: true,
 		},
 		password: {
 			type: DataTypes.STRING,
@@ -48,3 +48,5 @@ User.init(
 		name: "user",
 	}
 );
+
+module.exports = User;
