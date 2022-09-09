@@ -33,7 +33,7 @@ FriendList.init(
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		name: "friend_list",
+		modelName: "friend_list",
 	}
 );
 

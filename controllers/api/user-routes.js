@@ -1,8 +1,10 @@
 const router = require("express").Router();
-const { User, ListItem, Purchase } = require("../../models");
+const { User, ListItem, Purchase, FriendList } = require("../../models");
 
 router.get("/", (req, res) => {
-  User.findAll()
+  User.findAll({
+    attributes: {exclude: ["password"]}
+  })
     .then((dbUserData) => res.status(200).json(dbUserData))
     .catch((err) => {
       console.log(err);
@@ -104,7 +106,7 @@ router.post("/logout", (req, res) => {
   }
 });
 router.get("/friends", (req, res) => {
-  Friend.findAll({
+  FriendList.findAll({
     where: { user_id: req.session.user_id },
     include: [{ model: User }],
   })
@@ -118,7 +120,7 @@ router.get("/friends", (req, res) => {
 });
 
 router.post("/friends/:id", (req, res) => {
-  Friend.bulkCreate(
+  FriendList.bulkCreate(
     { user_id: req.session.user_id, friend_id: req.params.id },
     { user_id: req.params.id, friend_id: req.session.user_id }
   )

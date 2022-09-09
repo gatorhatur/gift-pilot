@@ -15,7 +15,7 @@ User.belongsToMany(User, {
 User.belongsToMany(User, {
 	through: FriendList,
 	as: "following",
-	foreignKey: "user_id",
+	foreignKey: "friend_id",
 });
 
 // friendlist belongs to a specific user
@@ -28,28 +28,35 @@ User.hasMany(FriendList, {
 	foreignKey: "user_id",
 });
 
-// list items belong to one user via purchase
+// user can have many items
+User.hasMany(ListItem, {
+	foreignKey: "user_id"
+})
+
+// each item with unique description belongs to one user
 ListItem.belongsTo(User, {
-	through: Purchase,
-	as: "item_user",
-	foreignKey: "user_id",
-});
+	foreignKey: "user_id"
+})
 
-// user can have many list items via purchase
-User.belongsToMany(ListItem, {
-	through: Purchase,
-	as: "user_items",
-	foreignKey: "listItem_id",
-});
+// users can make many purchases
+User.hasMany(Purchase, {
+	foreignKey: "user_id"
+})
 
-// each purchase is done once
-Purchase.belongsTo(ListItem, {
-	foreignKey: "listItem_id",
-});
-
+// each purchase unique to a user
 Purchase.belongsTo(User, {
-	foreignKey: "user_id",
-});
+	foreignKey: "user_id"
+})
+
+// list items can be purchased once
+ListItem.belongsTo(Purchase, {
+	foreignKey: "listItem_id"
+})
+
+// each purchase unique to a list item
+Purchase.belongsTo(ListItem, {
+	foreignKey: "listItem_id"
+})
 
 // an event may belong to many users via subbed events
 Event.belongsToMany(User, {
@@ -73,4 +80,4 @@ SubbedEvent.belongsTo(User, {
 	foreignKey: "user_id",
 });
 
-module.exports = { Event, FriendList, ListItem, SubbedEvent, Event, Purchase };
+module.exports = { User, FriendList, ListItem, SubbedEvent, Event, Purchase };

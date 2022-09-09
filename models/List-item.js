@@ -23,13 +23,21 @@ ListItem.init(
 		item_img_url: {
 			type: DataTypes.STRING,
 		},
+		user_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			references: {
+				model: "user",
+				key: "id",
+			},
+		},
 	},
 	{
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		name: "list_item",
+		modelName: "list_item",
 	}
 );
 

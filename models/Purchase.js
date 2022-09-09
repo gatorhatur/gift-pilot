@@ -15,7 +15,7 @@ Purchase.init(
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			references: {
-				model: "listItem",
+				model: "list_item",
 				key: "id",
 			},
 		},
@@ -33,7 +33,7 @@ Purchase.init(
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		name: "purchase",
+		modelName: "purchase",
 	}
 );
 

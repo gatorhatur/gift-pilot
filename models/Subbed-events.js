@@ -33,7 +33,7 @@ SubbedEvent.init(
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		name: "subbed_event",
+		modelName: "subbed_event",
 	}
 );
 
