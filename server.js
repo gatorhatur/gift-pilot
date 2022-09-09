@@ -10,10 +10,8 @@ const hbs = exphbs.create({});
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-
-
 const sess = {
-    secret: 'Super secret secret',
+    secret: process.env.SESSION_SECRET,
     cookie: {maxAge: 600000},
     resave: false,
     saveUninitialized: true,
