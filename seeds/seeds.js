@@ -3,28 +3,31 @@ const sequelize = require("../config/connection");
 async function seed() {
   console.log("seeding...");
   await sequelize.sync({ force: true });
-  await User.bulkCreate([
-    {
-      username: "user1",
-      email: "user1@user.com",
-      password: "user1roolz",
-    },
-    {
-      username: "user2",
-      email: "user2@user.com",
-      password: "user2roolz",
-    },
-    {
-      username: "user3",
-      email: "user3@user.com",
-      password: "user3roolz",
-    },
-    {
-      username: "user4",
-      email: "user4@user.com",
-      password: "user4roolz",
-    },
-  ]);
+  await User.bulkCreate(
+    [
+      {
+        username: "user1",
+        email: "user1@user.com",
+        password: "user1roolz",
+      },
+      {
+        username: "user2",
+        email: "user2@user.com",
+        password: "user2roolz",
+      },
+      {
+        username: "user3",
+        email: "user3@user.com",
+        password: "user3roolz",
+      },
+      {
+        username: "user4",
+        email: "user4@user.com",
+        password: "user4roolz",
+      },
+    ],
+    { individualHooks: true }
+  );
   await ListItem.bulkCreate([
     {
       item_desc: "gift item 1",
