@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { ListItem, Purchase, User } = require('../../models');
+const linkPreview = require('link-preview-js');
 
 
 //GET / ALL
@@ -27,8 +28,14 @@ router.post('/', async (req, res) => {
         "item_desc": "this is a description",
         "item_url": "https://google.com"
     }
-    get the user_id from session
+    get the user_id from session   
 */
+//protect against malicious redirects (protects against relative paths)
+  if (req.body.url && req.body.url.match(/^\/[^\/\\]/)) {
+    res.status(404).json({ message: "Please provide a different URL" })
+    return;
+  }
+    
     const exists = await ListItem.findOne({
         where: {
             user_id: res.session.user_id,
@@ -48,7 +55,20 @@ router.post('/', async (req, res) => {
         return;
     }
 
-    const img_url = 'test' //grabity
+    const img_url = await linkPreview.getLinkPreview(req.body.url, {
+    followRedirects: 'follow',
+  })
+    .then(data => {
+      if (!data.images.length) {
+        res.status(404).json({ message: "Unable to find an image" })
+        return;
+      }
+        res.json(data.images)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({message: "Something went wrong with fetching an image"});
+  })
 
     ListItem.create({
         item_desc: req.body.item_desc,
