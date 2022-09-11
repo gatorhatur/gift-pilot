@@ -8,6 +8,7 @@ router.get("/home", (req, res) => {
   } else {
     res.render("homepage");
   }
+
 });
 module.exports = router;
 //withAuth redirects unauthorized user to login page
