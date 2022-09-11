@@ -31,15 +31,15 @@ router.post('/', async (req, res) => {
     get the user_id from session   
 */
 //protect against malicious redirects (protects against relative paths)
-  if (req.body.url && req.body.url.match(/^\/[^\/\\]/)) {
+  if (req.body.item_url && req.body.item_url.match(/^\/[^\/\\]/)) {
     res.status(404).json({ message: "Please provide a different URL" })
     return;
   }
     
     const exists = await ListItem.findOne({
         where: {
-            user_id: res.session.user_id,
-            //user_id: req.body.user_id,
+            //user_id: res.session.user_id,
+            user_id: req.body.user_id,
             item_desc: req.body.item_desc
         }
     })
@@ -55,27 +55,34 @@ router.post('/', async (req, res) => {
         return;
     }
 
-    const img_url = await linkPreview.getLinkPreview(req.body.url, {
-    followRedirects: 'follow',
+    const img_url = await linkPreview.getLinkPreview(req.body.item_url, {
+        followRedirects: 'follow',
   })
     .then(data => {
       if (!data.images.length) {
         res.status(404).json({ message: "Unable to find an image" })
-        return;
-      }
-        res.json(data.images)
+        return false;
+        }
+        console.log(data.images);
+       return data.images
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({message: "Something went wrong with fetching an image"});
-  })
+        res.status(500).json({ message: "Something went wrong with fetching an image" });
+        return false;
+    })
+    
+    console.log(img_url);
+    if (!img_url) {
+        return;
+    }
 
     ListItem.create({
         item_desc: req.body.item_desc,
         item_url: req.body.item_url,
-        item_img_url: img_url,
-        //user_id: req.body.user_id
-        user_id: req.session.user_id
+        item_img_url: img_url[0],
+        user_id: req.body.user_id
+        //user_id: req.session.user_id
     })
         .then(createData => res.json(createData))
         .catch(err => {
