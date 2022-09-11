@@ -11,18 +11,7 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-//show users own gift list without including purchase data
-router.get("/dashboard", (req, res) => {
-  User.findOne({
-    where: { id: req.session.user_id },
-    include: [{ model: ListItem }],
-  })
-    .then((data) => res.status(200).json(data))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
 //create a new user/ sign up
 router.post("/", (req, res) => {
   User.create({
@@ -103,23 +92,36 @@ router.post("/friends/:id", (req, res) => {
       res.status(400).json(err);
     });
 });
-//use this route for viewing lists that do NOT belong to the user
+//use this route for viewing user lists
 router.get("/:id", (req, res) => {
-  User.findOne({
-    attributes: { exclude: ["password"] },
-    where: { id: req.params.id },
-    include: [{ model: ListItem, include: [{ model: Purchase }] }],
-  })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "could not find user with this id" });
-        return;
-      }
-      res.status(200).json(dbUserData);
+  //if a user is looking at their own page, do not include purchase data
+  if (req.params.id === req.session.user_id) {
+    User.findOne({
+      where: { id: req.session.user_id },
+      include: [{ model: ListItem }],
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+      .then((data) => res.status(200).json(data))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  } else {
+    User.findOne({
+      attributes: { exclude: ["password"] },
+      where: { id: req.params.id },
+      include: [{ model: ListItem, include: [{ model: Purchase }] }],
+    })
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res.status(404).json({ message: "could not find user with this id" });
+          return;
+        }
+        res.status(200).json(dbUserData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
 module.exports = router;
