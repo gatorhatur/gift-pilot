@@ -1,6 +1,14 @@
 const router = require("express").Router();
 const { User, ListItem, Purchase, FriendList } = require("../models");
 const withAuth = require("../utils/auth.js");
+
+router.get("/", (req, res) => {
+  if (req.session.user_id) {
+    res.redirect("/dashboard");
+  } else {
+    res.redirect("/home");
+  }
+});
 router.get("/home", (req, res) => {
   //if a user is already logged in, redirect them to dashboard
   if (req.session.user_id) {
@@ -8,7 +16,6 @@ router.get("/home", (req, res) => {
   } else {
     res.render("homepage");
   }
-
 });
 module.exports = router;
 //withAuth redirects unauthorized user to login page
