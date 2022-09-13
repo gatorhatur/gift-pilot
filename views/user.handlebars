@@ -1,0 +1,54 @@
+<section>
+    <button id="purchase-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#purchase-modal">
+        I've purchased a gift!
+    </button>
+<section>
+    <h2>{{user.username}}'s List</h2>
+{{#if user.list_items.length}}
+        <div class="container" id="gifts-container">
+            <div class="row">
+                <div class="col-9">
+                    <div class="row">
+                        {{#each user.list_items as |gift|}}
+                        <div class="col-5">     
+                            {{> user-gift-info gift}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+{{/if}}
+
+<!-- Purchase Modal -->
+<div class="modal fade" id="purchase-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">I've purchased a gift for this user:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form >
+          <div class="modal-body">
+              {{#each user.list_items as |gift|}}
+              {{#unless purchase}}
+                            <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault{{id}}" value="{{id}}">
+            <label class="form-check-label" for="flexRadioDefault{{id}}">
+              {{item_desc}}
+            </label>
+          </div>
+                            {{/unless}}
+                            {{/each}}
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" id="purchase-gift-btn">Confirm</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/javascript/purchase-gift.js"></script>
