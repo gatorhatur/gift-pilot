@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.site-info {
+    position: absolute;
+    top: 45vw;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    padding: 40px 250px;
+}
+
+.site-info h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+#login-modal-alert {
+    margin-top: 20px;
+}
