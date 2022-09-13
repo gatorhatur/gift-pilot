@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { ListItem, Purchase, User } = require("../../models");
-const linkPreview = require("link-preview-js");
+const fetch = require("node-fetch");
 const withAuth = require("../../utils/auth");
 
 //GET / ALL
@@ -35,10 +35,20 @@ router.post("/", withAuth, async (req, res) => {
     }
     get the user_id from session   
 */
-  //protect against malicious redirects (protects against relative paths)
-  if (req.body.item_url && req.body.item_url.match(/^\/[^\/\\]/)) {
-    res.status(404).json({ message: "Please provide a different URL" });
-    return;
+  let imgUrl;
+
+  if (req.body.item_url) {
+    const apiUrl = `https://api.linkpreview.net/?key=${process.env.LINKPREVIEW_API_KEY}&q=${req.body.item_url}`;
+
+    const linkPreviewObj = await fetch(apiUrl)
+      .then((response) => response.json())
+      .catch((err) => console.log(err));
+
+    console.log(linkPreviewObj);
+
+    if (linkPreviewObj.image) {
+      imgUrl = linkPreviewObj.image;
+    }
   }
 
   const exists = await ListItem.findOne({
@@ -60,10 +70,13 @@ router.post("/", withAuth, async (req, res) => {
     return;
   }
 
-  const img_url = await linkPreview
-    .getLinkPreview(req.body.item_url, {
-      followRedirects: "follow",
-    })
+  ListItem.create({
+    item_desc: req.body.item_desc,
+    item_url: req.body.item_url,
+    item_img_url: imgUrl,
+    //user_id: req.body.user_id
+    user_id: req.session.user_id,
+  })
     .then((data) => {
       if (!data.images.length) {
         res.status(404).json({ message: "Unable to find an image" });

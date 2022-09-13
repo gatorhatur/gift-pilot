@@ -15,13 +15,11 @@ ListItem.init(
 			type: DataTypes.STRING,
 		},
 		item_url: {
-			type: DataTypes.TEXT,
-			validate: {
-				isUrl: true,
-			},
+			type: DataTypes.STRING(512),
 		},
 		item_img_url: {
 			type: DataTypes.TEXT,
+			defaultValue: '/images/favpng_gift-cartoon.png'
 		},
 		user_id: {
 			type: DataTypes.INTEGER,
