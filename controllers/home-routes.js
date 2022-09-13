@@ -60,6 +60,7 @@ router.get("/:id", withAuth, (req, res) => {
         return;
       }
       const user = dbUserData.get({ plain: true });
+
       //sends a purchases variable through to conditionally render purchase data
       res.render("user", { user, purchases: true });
     })
