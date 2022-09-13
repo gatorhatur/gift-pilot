@@ -3,22 +3,40 @@
     scroll-behavior: smooth;
 }
 
+header {
+    background-color: #000;
+    margin: 0;
+    background-image: url(/images/31.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
 .site-info {
     position: absolute;
-    top: 45vw;
+    top: 35vh;
     width: 100%;
     text-align: center;
     margin: auto;
     padding: 40px 250px;
+    color: #fff;
 }
 
-.site-info h1 a {
+.site-info a {
     text-decoration: none;
-    color: black;
+    color: #fff;
 }
 
 #login-modal-alert {
     margin-top: 20px;
+}
+
+footer {
+    position: absolute;
+    top: 97vh;
+    width: 100%;
+    text-align: center;
+    color: #fff;
 }
 
 a {
@@ -29,4 +47,3 @@ img {
     max-width: 100%;
     height: auto;
 }
-
