@@ -1,8 +1,9 @@
 async function deleteFormHandler(event) {
     event.preventDefault();
-    console.log(event.target.parentElement)
 
+    // retrieves item id
     const id = document.querySelector(".gift-id").textContent
+    console.log(id)
     
     const response = await fetch(`/api/listItems/${id}`, {
         method: 'DELETE'

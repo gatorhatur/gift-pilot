@@ -1,19 +1,7 @@
 <section>
-    <h2 id="new-gift-btn" data-bs-toggle="modal" data-bs-target="#gift-modal">Create New Gift</h2>
-
-    <form class="new-gift-form">
-        <div>
-            <label for="item_desc">Title</label>
-            <input type="text" id="item_desc" name="item_desc" />
-        </div>
-        <div>
-            <label for="item_img_url">URL</label>
-            <input id="item_img_url" name="item_img_url" />
-        </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>
-</section>
-
+    <button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
+        Create New Gift
+    </button>
 {{#if gifts.length}}
 <section>
     <h2>Your List</h2>
@@ -24,8 +12,6 @@
                         {{#each gifts as |gift|}}
                         <div class="col-5">     
                             {{> gift-info gift}}
-                            <div class="gift-id" style="visibility: hidden;">{{gift.id}}</div>
-                            <button type="button" class="delete-gift-btn btn btn-danger">Delete Gift</button>
                         </div>
                         {{/each}}
                     </div>
@@ -36,4 +22,5 @@
 <script src="/javascript/delete-gift.js"></script>
 {{/if}}
 
+{{> add-gift-modal}}
 <script src="/javascript/add-gift.js"></script>

@@ -80,7 +80,6 @@ router.post("/", withAuth, async (req, res) => {
 			return false;
 		});
 
-    console.log(req.body.item_url)
 	console.log(img_url);
 	if (!img_url) {
 		return;
