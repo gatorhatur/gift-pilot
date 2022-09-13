@@ -1,11 +1,14 @@
-<section>
-    <button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
-        Create New Gift
-    </button>
+
+<button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
+    Create New Gift
+</button>
+<button id="new-friend-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#friend-modal">
+    Add Friend
+</button>
 {{#if gifts.length}}
-<section>
+<section class="container">
     <h2>Your List</h2>
-        <div class="container" id="gifts-container">
+        <div id="gifts-container">
             <div class="row">
                 <div class="col-9">
                     <div class="row">
@@ -19,7 +22,24 @@
             </div>
         </div>
 </section>
+{{#if friends.length}}
+<section>
+    <h2>Your Friends</h2>
+        <div id="friend-container">
+            <div class="row">
+                {{#each friends as |friend|}}
+                <div class="col-3">
+                    {{> friend-info friend}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+</section>
+
 <script src="/javascript/delete-gift.js"></script>
 {{/if}}
+{{/if}}
 
+{{!-- friend and gift modal popup --}}
 {{> add-gift-modal}}
+{{> add-friend-modal}}

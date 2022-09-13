@@ -13,6 +13,7 @@ const withAuth = require("../utils/auth");
 router.get("/", withAuth, (req, res) => {
 	ListItem.findAll({
 		where: {
+			// get user's list items
 			user_id: req.session.user_id,
 		},
 		include: [
@@ -31,6 +32,32 @@ router.get("/", withAuth, (req, res) => {
 			// serialize
 			const gifts = result.map((gift) => gift.get({ plain: true }));
 			res.render("dashboard", { gifts, loggedIn: true });
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
+// get user friend list
+router.get("/", withAuth, (req, res) => {
+	// will need to set click functionality to users friend
+	FriendList.findAll({
+		// get user friends
+		where: {
+			user_id: req.session.user_id,
+		},
+		include: [
+			{
+				model: User,
+				attributes: ["username", "birthDate"],
+			},
+		],
+	})
+		.then((result) => {
+			// serialize data
+			const friends = result.map((friend) => friend.get({ plain: true }));
+			res.render("dashboard", { friends, loggedIn: true });
 		})
 		.catch((err) => {
 			console.log(err);

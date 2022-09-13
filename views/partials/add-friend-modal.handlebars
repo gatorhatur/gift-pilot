@@ -1,0 +1,43 @@
+<!-- Friend Modal -->
+<div
+	class="modal fade"
+	id="friend-modal"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Add to your friend list</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body">
+				<form class="new-gift-form">
+					<div class="mb-3">
+						<label class="form-label" for="gift-title">Friend Username</label>
+						<input
+							class="form-control"
+							type="text"
+							id="friend-username"
+							name="friend-username"
+						/>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="create-gift-btn">Add
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="module" src="/javascript/add-gift.js"></script>
