@@ -30,7 +30,8 @@ router.post('/', async (req, res) => {
     }
     get the user_id from session   
 */
-//protect against malicious redirects (protects against relative paths)
+//protect against malicious redirects (protects against relative paths)    
+    
   if (req.body.item_url && req.body.item_url.match(/^\/[^\/\\]/)) {
     res.status(404).json({ message: "Please provide a different URL" })
     return;
@@ -38,8 +39,8 @@ router.post('/', async (req, res) => {
     
     const exists = await ListItem.findOne({
         where: {
-            //user_id: res.session.user_id,
-            user_id: req.body.user_id,
+            user_id: req.session.user_id,
+            //user_id: req.body.user_id,
             item_desc: req.body.item_desc
         }
     })
@@ -81,8 +82,8 @@ router.post('/', async (req, res) => {
         item_desc: req.body.item_desc,
         item_url: req.body.item_url,
         item_img_url: img_url[0],
-        user_id: req.body.user_id
-        //user_id: req.session.user_id
+        //user_id: req.body.user_id
+        user_id: req.session.user_id
     })
         .then(createData => res.json(createData))
         .catch(err => {

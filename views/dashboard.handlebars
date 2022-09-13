@@ -1,5 +1,5 @@
 <section>
-    <h2>Create New Gift</h2>
+    <h2 id="new-gift-btn" data-bs-toggle="modal" data-bs-target="#gift-modal">Create New Gift</h2>
 
     <form class="new-gift-form">
         <div>
@@ -14,10 +14,10 @@
     </form>
 </section>
 
-{{if gifts.length}}
+{{#if gifts.length}}
 <section>
     <h2>Your List</h2>
-    {{each gifts as |gift|}}
+    {{#each gifts as |gift|}}
         {{> gift-info gift}}
         <br />
         <button type="submit" class="delete-gift-btn btn">Delete Gift</button>
@@ -25,5 +25,6 @@
 </section>
 {{/if}}
 
-<script src="/javascript/add-gift.js"></script>
-<script src="/javascript/delete-post.js"></script>
+{{> add-gift-modal}}
+
+<script src="/javascript/delete-gift.js"></script>

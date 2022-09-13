@@ -1,0 +1,30 @@
+ <!-- Gift Modal -->
+<div class="modal fade" id="gift-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add to your gift list</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="new-gift-form">
+            <div class="mb-3">
+              <label class="form-label" for="gift-title">Gift Description</label>
+              <input class="form-control" type="text" id="gift-title" name="gift-title" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="gift-url">Gift Url (Optional)</label><br>
+              <input class="form-control" name="gift-url" id="gift-url"></input>
+            </div> 
+            <div id="post-modal-alert" class="alert alert-info" role="alert">
+                Proving a URL will allow you to select an image to go with your gift idea.
+            </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="create-gift-btn">Add to List</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/javascript/add-gift.js"></script>
