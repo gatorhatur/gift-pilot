@@ -5,7 +5,7 @@
 
 .site-info {
     position: absolute;
-    top: 45vw;
+    top: 35vh;
     width: 100%;
     text-align: center;
     margin: auto;
@@ -21,6 +21,13 @@
     margin-top: 20px;
 }
 
+footer {
+    position: absolute;
+    top: 97vh;
+    width: 100%;
+    text-align: center;
+}
+
 a {
     max-width: 100%;
 }
@@ -29,4 +36,3 @@ img {
     max-width: 100%;
     height: auto;
 }
-
