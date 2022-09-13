@@ -1,8 +1,10 @@
 async function newFormHandler(event) {
 	event.preventDefault();
 
-	const item_desc = document.querySelector('input[name="item_desc"]').value;
-    const item_url = document.querySelector('input[name="item_img_url"]').value;
+    const item_desc = document.querySelector('input[name="gift-title"]').value;
+    const item_img_url = document.querySelector('input[name="gift-url"]').value
+
+    console.log(item_desc, item_img_url);
 
 	const response = await fetch(`/api/listItems`, {
 		method: "POST",
@@ -22,6 +24,4 @@ async function newFormHandler(event) {
 	}
 }
 
-document
-	.querySelector(".new-gift-form")
-	.addEventListener("submit", newFormHandler);
+document.querySelector('#create-gift-btn').addEventListener('click', newFormHandler);

@@ -90,14 +90,16 @@ router.post("/", withAuth, async (req, res) => {
         item_desc: req.body.item_desc,
         item_url: req.body.item_url,
         item_img_url: img_url[0],
-		user_id: req.session.user_id,
-	})
-		.then((createData) => res.json(createData))
-		.catch((err) => {
-			console.log(err);
-			res.status(500).json(err);
-		});
-});
+        //user_id: req.body.user_id
+        user_id: req.session.user_id
+    })
+        .then(createData => res.json(createData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+    })
+})
+    
 
 //DELETE /:id
 router.delete("/:id", withAuth, (req, res) => {
