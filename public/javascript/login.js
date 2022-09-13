@@ -1,5 +1,6 @@
 async function loginFormHandler(event) {
     event.preventDefault();
+    console.log("clicked login button");
 
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
@@ -24,11 +25,14 @@ async function loginFormHandler(event) {
 
 async function signupFormHandler(event) {
     event.preventDefault();
+    console.log("clicked signup button")
 
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    const birthdate = document.querySelector('#birthdate-signup').value.trim();
+    const originalBirthdate = document.querySelector('#birthdate-signup').value.trim();
+    const birthdate = originalBirthdate.slice(5);
+    console.log(birthdate);
 
     if (username && email && password) {
         const response = await fetch('/api/users', {
@@ -36,7 +40,8 @@ async function signupFormHandler(event) {
             body: JSON.stringify({
                 username,
                 email,
-                password
+                password,
+                birthdate
             }),
             headers: { 'Content-Type': 'application/json' }
         });
@@ -49,6 +54,6 @@ async function signupFormHandler(event) {
     }
 }
 
-document.querySelector('#login-modal').addEventListener('submit', loginFormHandler);
+document.querySelector('#login-btn').addEventListener('click', loginFormHandler);
 
-document.querySelector('#signup-modal').addEventListener('submit', signupFormHandler);
+document.querySelector('#signup-btn').addEventListener('click', signupFormHandler);
