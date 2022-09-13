@@ -8,7 +8,9 @@
 				<img src="{{item_img_url}}" />
 			</a>
 		</p>
+        {{#if purchase}}
 	</div>
-		<button type="button" class="delete-gift-btn btn btn-danger" id="{{id}}">Delete Gift</button>
+		{{purchase.user.username}} has purchased this
 	</div>
+    {{/if}}
 </div>

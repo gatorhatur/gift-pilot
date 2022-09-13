@@ -8,6 +8,7 @@
     "express-session": "^1.17.3",
     "link-preview-js": "^3.0.4",
     "mysql2": "^2.3.3",
+    "node-fetch": "2.0",
     "sequelize": "^6.21.4"
   },
   "name": "gift-pilot",

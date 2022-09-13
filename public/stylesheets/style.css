@@ -20,3 +20,13 @@
 #login-modal-alert {
     margin-top: 20px;
 }
+
+a {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+

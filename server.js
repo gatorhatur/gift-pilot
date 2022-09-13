@@ -12,7 +12,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const sess = {
   secret: process.env.SESSION_SECRET,
-  cookie: { maxAge: 600000 },
+  cookie: { maxAge: 6000000 },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -32,6 +32,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-	app.listen(PORT, () => console.log("Now listening"));
+sequelize.sync({ force: false, alter: true }).then(() => {
+  app.listen(PORT, () => console.log("Now listening"));
 });
