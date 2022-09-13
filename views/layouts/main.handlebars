@@ -13,28 +13,40 @@
 <body class="bg-light">
     <div class="wrapper">
         <header>
+            {{#if loggedIn}}
+            <div class="site-info-dashboard">
+                <h1>
+                    <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
+                </h1>
+                <nav>
+                    <a class="btn-no-style display-6 text-secondary" href="/dashboard">Dashboard</a>
+                    <button id="logout" class="btn-no-style display-6 text-secondary">Logout</button>
+                </nav>
+            </div>
+            {{else}}
             <div class="site-info">
                 <h1>
                     <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
                 </h1>
                 <nav>
-                    {{#if loggedIn}}
-                    <a class="btn-no-style display-6 text-secondary" href="/dashboard">Dashboard</a>
-                    <button id="logout" class="btn-no-style display-6 text-secondary">Logout</button>
-                    {{else}}
-                    <a class="btn-no-style display-6 text-secondary" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
-                    {{/if}}
+                    <a class="btn-no-style display-6" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
                 </nav>
                 <div>
                     {{{ body }}}
                 </div>
             </div>
+            {{/if}}
         </header>
+        {{#if loggedIn}}
+        <main>
+            {{{ body }}}
+        </main>
+        {{/if}}
         <footer>
             Gift Pilot -- Making gifting slightly less miserable
         </footer>
     </div>
-    
+
     {{#if loggedIn}}
     {{else}}
     {{> loginModal}}
