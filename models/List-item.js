@@ -15,7 +15,7 @@ ListItem.init(
 			type: DataTypes.STRING,
 		},
 		item_url: {
-			type: DataTypes.TEXT,
+			type: DataTypes.STRING(512),
 			validate: {
 				isUrl: true,
 			},
