@@ -1,10 +1,10 @@
 async function deleteFormHandler(event) {
     event.preventDefault();
+    console.log(event.target.parentElement)
 
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
-    const response = await fetch(`/api/gifts/${id}`, {
+    const id = document.querySelector(".gift-id").textContent
+    
+    const response = await fetch(`/api/listItems/${id}`, {
         method: 'DELETE'
     });
 

@@ -24,6 +24,29 @@
                 </li>
             </ul>
         </nav>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".create-modal">Create</button>
+        <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+            <label for="item_desc">Title</label>
+            <input type="text" id="item_desc" name="item_desc"/>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div>
+            <label for="item_img_url">URL</label>
+            <input id="item_img_url" name="item_img_url"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="create-item btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
         <section>
             <div class="container">
                 <div class="row">
@@ -32,7 +55,6 @@
                         <h3>
                             <button name="add-item-btn" classs="btn btn-primary"type="button">Add Item</button>
                         </h3>
-                        <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="card" style="width: 18rem;">
@@ -81,7 +103,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

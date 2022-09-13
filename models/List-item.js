@@ -15,13 +15,13 @@ ListItem.init(
 			type: DataTypes.STRING,
 		},
 		item_url: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			validate: {
 				isUrl: true,
 			},
 		},
 		item_img_url: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 		},
 		user_id: {
 			type: DataTypes.INTEGER,
