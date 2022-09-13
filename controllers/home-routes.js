@@ -34,8 +34,9 @@ router.get("/dashboard", withAuth, (req, res) => {
     });
 });
 router.get("/:id", withAuth, (req, res) => {
+  console.log(req.params.id);
   //sees if user is sneakily trying to view whos getting their gifts
-  if (req.session.user_id === req.params.id) {
+  if (req.session.user_id == req.params.id) {
     res.redirect("/dashboard");
   }
   //includes list item, purchase data, and user data for each purchase
