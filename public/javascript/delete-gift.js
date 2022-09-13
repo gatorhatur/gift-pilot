@@ -1,18 +1,28 @@
 async function deleteFormHandler(event) {
-    event.preventDefault();
+	event.preventDefault();
 
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
-    const response = await fetch(`/api/gifts/${id}`, {
-        method: 'DELETE'
-    });
+    const href = event.target.parentElement.getAttribute("href")
+	// retrieves item id
+	const id = event.target.id;
 
-    if (response.ok) {
-        document.location.replace('/dashboard/');
+	const deleteBtn = document.getElementById(id);
+	console.log(deleteBtn);
+
+	if (deleteBtn) {
+		const response = await fetch(`/api/listItems/${id}`, {
+			method: "DELETE",
+		});
+
+		if (response.ok) {
+			document.location.replace('/dashboard/');
+		} else {
+			alert(response.statusText);
+		}
     } else {
-        alert(response.statusText);
+        window.open(href)
     }
 }
 
-document.querySelector('.delete-gift-btn').addEventListener('click', deleteFormHandler);
+document
+	.querySelector("#gifts-container")
+	.addEventListener("click", deleteFormHandler);
