@@ -68,23 +68,24 @@ router.post("/logout", (req, res) => {
 });
 //get a list of all users friends
 router.get("/friends", (req, res) => {
-    FriendList.findAll({
-    where: { user_id: req.session.user_id },
+	FriendList.findAll({
+		where: { user_id: req.session.user_id },
 		include: [
 			{
 				model: User,
 				attributes: {
-					exclude: ["password"]
-				}
-			}],
-  })
-    .then((dbdata) => {
-      res.status(200).json(dbdata);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
-    })
+					exclude: ["password"],
+				},
+			},
+		],
+	})
+		.then((dbdata) => {
+			res.status(200).json(dbdata);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(400).json(err);
+		});
 	// FriendList.findAll({
 	// 	where: { user_id: req.session.user_id },
 	// 	include: [{ model: User }],
@@ -99,22 +100,30 @@ router.get("/friends", (req, res) => {
 });
 //make a new friend pairing given user id of friend as param
 router.post("/friends/:username", (req, res) => {
-    User.findOne({
-        where: {
-            username: req.params.username,
-        },
-	}).then((friend) => {
-        FriendList.bulkCreate(
-            { user_id: req.session.user_id, friend_id: friend.id},
-            { user_id: friend.id, friend_id: req.session.user_id }
-        )
-            .then((dbData) => res.status(200).json(dbData))
-            .catch((err) => {
-                console.log(err);
-                res.status(400).json(err);
-            });
-    })
+	User.findOne({
+		where: {
+			username: req.params.username,
+		},
+		attributes: { exclude: ["password"] },
+		include: [
+			{
+				model: FriendList,
+			},
+		],
+	})
+		.then((friend) => {
+			FriendList.bulkCreate(
+				{ user_id: req.session.user_id, friend_id: friend.friend_lists[0].friend_id },
+				{ user_id: friend.friend_lists[0].friend_id, friend_id: req.session.user_id }
+			);
+		})
+		.then((dbData) => res.status(200).json(dbData))
+		.catch((err) => {
+			console.log(err);
+			res.status(400).json(err);
+		});
 });
+
 //use this route for viewing user lists
 router.get("/:id", (req, res) => {
 	//if a user is looking at their own page, do not include purchase data

@@ -40,10 +40,11 @@ router.get("/", withAuth, (req, res) => {
 });
 
 // get user friend list
-router.get("/", withAuth, (req, res) => {
+router.get("/:id", (req, res) => {
 	// will need to set click functionality to users friend
 	FriendList.findAll({
-		where: { user_id: req.session.user_id },
+		// use finall method to retrieve array
+		where: { user_id: req.params.id },
 		include: [
 			{
 				model: User,
@@ -53,10 +54,12 @@ router.get("/", withAuth, (req, res) => {
 			},
 		],
 	})
-		.then((result) => {
-			// serialize data
-			const friends = result.map((friend) => friend.get({ plain: true }));
-			res.render("dashboard", { friends, loggedIn: true });
+	.then((result) => {
+		// res.json(result)
+		
+		// serialize data
+		const friends = result.map((friend) => friend.get({ plain: true }));
+		res.render("dashboard", { friends, loggedIn: true });
 		})
 		.catch((err) => {
 			console.log(err);
