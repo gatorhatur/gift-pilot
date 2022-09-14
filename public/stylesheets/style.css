@@ -1,21 +1,25 @@
 * {
     padding: 0;
     scroll-behavior: smooth;
+    font-family: 'Source Code Pro';
+
 }
 
 .header {
     background-color: #000;
     margin: 0;
-    background-image: url(/images/31.png);
+    background-image: url(/images/35.png);
     background-size: cover;
-    background-position: 80%;
+    background-position: center;
     height: 100vh;
 }
+
+
 
 .dashboard-header {
     background-color: #000;
     margin: 0;
-    background-image: url(/images/31.png);
+    background-image: url(/images/35.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -24,7 +28,7 @@
 main {
     background-color: #000;
     margin: 0;
-    background-image: url(/images/31.png);
+    background-image: url(/images/35.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -61,7 +65,7 @@ main {
 
 footer {
     position: absolute;
-    top: 97vh;
+    top: 90vh;
     width: 100%;
     text-align: center;
     color: #fff;
@@ -74,4 +78,16 @@ a {
 img {
     max-width: 100%;
     height: auto;
+}
+
+.font-scp {
+    font-family: 'Source Code Pro';
+}
+
+.font-asc {
+    font-family: 'Amatic SC';
+}
+
+#friendlist {
+    background-color: aquamarine;
 }

@@ -1,23 +1,24 @@
-<section>
+<section class="row">
+  <div class="col-10">
     <button id="purchase-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#purchase-modal">
         I've purchased a gift!
     </button>
 <section>
     <h2>{{user.username}}'s List</h2>
 {{#if user.list_items.length}}
-        <div class="container" id="gifts-container">
-            <div class="row">
-                <div class="col-9">
-                    <div class="row">
+         <section>
+                <div class="row d-flex" id="gifts-container">
+    
                         {{#each user.list_items as |gift|}}
-                        <div class="col-5">     
+                        <div class="col-2">
                             {{> user-gift-info gift}}
                         </div>
                         {{/each}}
-                    </div>
+               
                 </div>
-            </div>
-        </div>
+       
+            </section>
+    
 </section>
 
 {{/if}}
