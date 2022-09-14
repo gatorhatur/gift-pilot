@@ -3,13 +3,41 @@
     scroll-behavior: smooth;
 }
 
-header {
+.header {
     background-color: #000;
     margin: 0;
     background-image: url(/images/31.png);
     background-size: cover;
-    background-position: center;
+    background-position: 80%;
     height: 100vh;
+}
+
+.dashboard-header {
+    background-color: #000;
+    margin: 0;
+    background-image: url(/images/31.png);
+    background-size: cover;
+    background-position: 80%;
+    background-attachment: fixed;
+}
+
+main {
+    background-color: #000;
+    margin: 0;
+    background-image: url(/images/31.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 80%;
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+
+.box .row.content {
+    flex: 1 1 auto;
 }
 
 .site-info {
