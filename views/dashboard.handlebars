@@ -2,15 +2,15 @@
     <button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
         Create New Gift
     </button>
-{{#if gifts.length}}
-<section>
-    <h2>Your List</h2>
+    {{#if gifts.length}}
+    <section>
+        <h2>Your List</h2>
         <div class="container" id="gifts-container">
             <div class="row">
                 <div class="col-9">
                     <div class="row">
                         {{#each gifts as |gift|}}
-                        <div class="col-5">     
+                        <div class="col-5">
                             {{> gift-info gift}}
                         </div>
                         {{/each}}
@@ -18,8 +18,11 @@
                 </div>
             </div>
         </div>
-</section>
-<script src="/javascript/delete-gift.js"></script>
-{{/if}}
+    </section>
+    <script src="/javascript/delete-gift.js"></script>
+    {{/if}}
 
-{{> add-gift-modal}}
+    {{> add-gift-modal}}
+    <footer>
+        Gift Pilot -- Making gifting slightly less miserable
+    </footer>
