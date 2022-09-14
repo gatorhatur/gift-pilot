@@ -15,13 +15,13 @@
     <div class="wrapper box">
 
         {{#if loggedIn}}
-        <header class="dashboard-header">
-            <div class="site-info-dashboard">
+        <header class="dashboard-header mb-3 px-3">
+            <div class="site-info-dashboard d-flex justify-content-between align-items-center">
                 <h1>
-                    <a class="font-asc display-1 btn-no-style" href="/home">Gift Pilot</a>
+                    <a class="font-asc display-1 text-decoration-none" href="/home">Gift Pilot</a>
                 </h1>
                 <nav>
-                    <a class="btn-no-style display-6 text-secondary" href="/dashboard">Dashboard</a>
+                    <a class="btn-no-style display-6 text-secondary text-decoration-none" href="/dashboard">Dashboard</a>
                     <button id="logout" class="btn-no-style display-6 text-secondary">Logout</button>
                 </nav>
             </div>
@@ -32,10 +32,11 @@
                 <h1>
                     <a class="font-asc display-1 btn-no-style" href="/home">Gift Pilot</a>
                 </h1>
-                <nav>
-                    <a class="btn-no-style display-6" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
-                </nav>
-                <div>
+                <div class="border border-secondary rounded p-2 d-flex justify-content-center">
+                    <div>
+                        <img src="/images/logo.png" alt="Gift wearing Aviators"/>
+                         <a class="btn-no-style display-6" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
+                    </div>
                     {{{ body }}}
                 </div>
             </div>
@@ -43,7 +44,7 @@
         {{/if}}
 
         {{#if loggedIn}}
-        <main class="row content">
+        <main class="row content px-3">
             {{{ body }}}
         </main>
         {{/if}}

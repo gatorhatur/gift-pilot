@@ -2,36 +2,24 @@
     padding: 0;
     scroll-behavior: smooth;
     font-family: 'Source Code Pro';
+    --decorative-color: #00fdc8;
+    --primary-color: #ef2f20;
+    --primary-text-color: #212121;
 
 }
 
 .header {
-    background-color: #000;
     margin: 0;
-    background-image: url(/images/35.png);
-    background-size: cover;
-    background-position: center;
     height: 100vh;
 }
 
-
-
 .dashboard-header {
-    background-color: #000;
     margin: 0;
-    background-image: url(/images/35.png);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    border-bottom: var(--decorative-color) solid 5px;
 }
 
 main {
-    background-color: #000;
     margin: 0;
-    background-image: url(/images/35.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
 }
 
 .box {
@@ -46,17 +34,17 @@ main {
 
 .site-info {
     position: absolute;
-    top: 35vh;
+    top: 25vh;
     width: 100%;
     text-align: center;
     margin: auto;
-    padding: 40px 250px;
-    color: #fff;
+    padding: 40px 150px;
+    color: var(--primary-text-color)
 }
 
 .site-info a {
     text-decoration: none;
-    color: #fff;
+    color: var(--primary-text-color);
 }
 
 #login-modal-alert {
@@ -68,7 +56,8 @@ footer {
     top: 90vh;
     width: 100%;
     text-align: center;
-    color: #fff;
+    color: var(--primary-text-color);
+    font-weight: bold;
 }
 
 a {
@@ -82,6 +71,7 @@ img {
 
 .font-scp {
     font-family: 'Source Code Pro';
+    
 }
 
 .font-asc {
