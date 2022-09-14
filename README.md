@@ -1,49 +1,43 @@
-# gift-pilot
+# Gift Pilot -- making gifting slightly less miserable
 
-## User Story
+## Purpose
 
-As a thoughtful person, with crippling social anxiety, I want to make sure I am providing gifts to my friends that they have not alreay received and make sure they don't give me duplicate presents
+As a thoughtful person, with crippling social anxiety, I want to make sure I am providing gifts to my friends that they have not already received and make sure they don't give me duplicate presents.
 
-## Basic Description (MVP)
+With Gift Pilot, users can expect to create a list of the items they desire for any occasion. Users can also expect to be able to look at the lists of their friends and notate that they have purchased a gift on the list while keeping it a secret from the recipient. How thoughtful!
 
-WHEN I navigate to the site
+## Built with
 
-TEHN I am presented with a basic idea of the service and a login/sign-up screen
+- mySQL
+- Sequelize
+- Express
+- Handlebars
+- [LinkPreview API](https://www.linkpreview.net/)
 
-WHEN I enter my information into the fields and click create account
+## Setup Locally
 
-THEN I am logged and see a dashboard where I can see and add items to my gift list, I cannot see the ones that people are purchasing for me. I can see a list of friends
+### Getting Started
 
-WHEN I click add item
+- Install mySQL Community Server - [mySQL Community Download]('https://dev.mysql.com/downloads/mysql/')
+- Register for a free account with [LinkPreview API](https://www.linkpreview.net/) to get an API Key
+- Clone this repo - `git clone https://github.com/gatorhatur/gift-pilot.git`
+- Install the dependencies with - `npm i`
+- Create a .env file containing values for DB_USER, DB_PW, SESSION_SECRET, and LINKPREVIEW_API_KEY. Add DB_NAME='gift_pilot_db' to target the correct database.
 
-THEN I get prompted to enter the name of a gift and an optional purchase link
+### Create the Database
 
-WHEN I click submit
+- From PowerShell or Command Prompt navigate to the 'db' directory of the cloned repo and log into mysql - `mysql -u root -p`
+- Create the database - `source schmea.sql`
+- If you wish to seed the database from your command line interface of choice (in the root of the cloned repo directory), type - `npm run seed`
 
-THEN a preview image of the gift is displayed
+![Database Diagram](/public/images/Database_Diagram.JPG)
 
-WHEN I don't enter a URL
+### You're Ready!
 
-THEN a placeholder image is used instead
+- From the ../gift-pilot directory - `npm start`
+- Use an api tool such as Insomnia or Postman to test the apis or go directly to the [local site](http://localhost:3001)
 
-WHEN I view another users gift list
+## Links
 
-THEN I can see which gifts are being purchased and by who
-
-WHEN I click purchase
-
-THEN The gift shows it's been purchased
-
-IF the gift has already been purchased
-
-THEN I receive an alert that the gift has already been purchased
-
-============================= EXTRAS ============================
-
-WHEN I click follow user
-
-THEN they appear in the friends list section of my dashboard
-
-WHEN I click profile
-
-THEN I can update my information and what events I observe
+[Live Site](https://gift-pilot.herokuapp.com/home)<br>
+[Checkout the Code](https://github.com/gatorhatur/gift-pilot)
