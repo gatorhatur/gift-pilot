@@ -8,36 +8,34 @@
 {{#if gifts.length}}
 <section class="container">
     <h2>Your List</h2>
-        <div id="gifts-container">
-            <div class="row">
-                <div class="col-9">
-                    <div class="row">
-                        {{#each gifts as |gift|}}
-                        <div class="col-5">     
-                            {{> gift-info gift}}
-                        </div>
-                        {{/each}}
+    <div id="gifts-container">
+        <div class="row">
+            <div class="col-9">
+                <div class="row">
+                    {{#each gifts as |gift|}}
+                    <div class="col-5">     
+                        {{> gift-info gift}}
                     </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
+    </div>
 </section>
-{{#if friends.length}}
 <section>
     <h2>Your Friends</h2>
-        <div id="friend-container">
-            <div class="row">
-                {{#each friends as |friend|}}
-                <div class="col-3">
-                    {{> friend-info friend}}
-                </div>
-                {{/each}}
+    <div id="friend-container">
+        <div class="row">
+            {{#each friends as |friend|}}
+            <div class="col-3">
+                {{> friend-info friend}}
             </div>
+            {{/each}}
         </div>
+    </div>
 </section>
 
 <script src="/javascript/delete-gift.js"></script>
-{{/if}}
 {{/if}}
 
 {{!-- friend and gift modal popup --}}
