@@ -26,7 +26,7 @@ router.get("/dashboard", withAuth, (req, res) => {
   })
     .then((data) => {
       const user = data.get({ plain: true });
-      res.render("dashboard", { user });
+      res.render("dashboard", { user, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -63,7 +63,7 @@ router.get("/:id", withAuth, (req, res) => {
       const user = dbUserData.get({ plain: true });
 
       //sends a purchases variable through to conditionally render purchase data
-      res.render("user", { user, purchases: true });
+      res.render("user", { user, purchases: true, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
