@@ -30,7 +30,7 @@ With Gift Pilot, users can expect to create a list of the items they desire for 
 - Create the database - `source schmea.sql`
 - If you wish to seed the database from your command line interface of choice (in the root of the cloned repo directory), type - `npm run seed`
 
-![Database Diagram](/public/images/Database_Diagram.jpg)
+![Database Diagram](/public/images/Database_Diagram.JPG)
 
 ### You're Ready!
 
