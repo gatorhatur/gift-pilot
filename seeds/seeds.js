@@ -105,14 +105,6 @@ async function seed() {
       user_id: 2,
       friend_id: 1,
     },
-    {
-      user_id: 3,
-      friend_id: 4,
-    },
-    {
-      user_id: 4,
-      friend_id: 3,
-    },
   ]);
   await Purchase.bulkCreate([
     {

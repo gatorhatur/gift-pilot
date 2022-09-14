@@ -99,29 +99,38 @@ router.get("/friends", (req, res) => {
 	// 	});
 });
 //make a new friend pairing given user id of friend as param
-router.post("/friends/:username", (req, res) => {
-	User.findOne({
-		where: {
-			username: req.params.username,
-		},
-		attributes: { exclude: ["password"] },
-		include: [
-			{
-				model: FriendList,
+router.post("/friends/:username", async (req, res) => {
+
+	try {
+		const userData = await User.findOne({
+			where: {
+				username: req.params.username,
 			},
-		],
-	})
-		.then((friend) => {
-			FriendList.bulkCreate(
-				{ user_id: req.session.user_id, friend_id: friend.friend_lists[0].friend_id },
-				{ user_id: friend.friend_lists[0].friend_id, friend_id: req.session.user_id }
-			);
-		})
-		.then((dbData) => res.status(200).json(dbData))
-		.catch((err) => {
-			console.log(err);
-			res.status(400).json(err);
+			attributes: { exclude: ["password"] },
+			include: [
+				{
+					model: FriendList,
+				},
+			],
+			raw: true,
+			nest: true,
 		});
+
+		console.log(userData)
+
+		const friendData = await FriendList.bulkCreate([
+				{ user_id: req.session.user_id, friend_id: userData.id },
+				{ user_id: userData.id, friend_id: req.session.user_id }
+		]);
+
+		console.log(friendData);
+		
+		return res.status(200).json(friendData);
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json(err);
+	}
+
 });
 
 //use this route for viewing user lists
