@@ -67,9 +67,9 @@ router.post("/logout", (req, res) => {
 	}
 });
 //get a list of all users friends
-router.get("/friends/:id", (req, res) => {
+router.get("/friends", (req, res) => {
     FriendList.findAll({
-    where: { user_id: req.params.id },
+    where: { user_id: req.session.user_id },
 		include: [
 			{
 				model: User,
