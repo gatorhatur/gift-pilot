@@ -26,7 +26,22 @@
     </div>
 
     <div class="col-2" id="friendlist">
-        Friendslist will go here
+    <button id="friend-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#friend-modal">
+        Add Friend
+    </button>
+
+        {{#if friends.length}}
+        <section>
+            <h2>Your Friends</h2>
+            <div class="row d-flex" id="friends-container">
+                    {{#each friends as |friend|}}
+                    <div class="list">
+                        {{> friend-info friend}}
+                    </div>
+                    {{/each}}
+            </div>
+        </section>
+        {{/if}}
     </div>
 </section>
 

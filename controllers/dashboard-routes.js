@@ -43,14 +43,13 @@ router.get("/", withAuth, (req, res) => {
 router.get("/", withAuth, (req, res) => {
 	// will need to set click functionality to users friend
 	FriendList.findAll({
-		// get user friends
-		where: {
-			user_id: req.session.user_id,
-		},
+		where: { user_id: req.session.user_id },
 		include: [
 			{
 				model: User,
-				attributes: ["username", "birthDate"],
+				attributes: {
+					exclude: ["password"],
+				},
 			},
 		],
 	})
