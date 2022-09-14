@@ -1,7 +1,6 @@
 * {
     padding: 0;
     scroll-behavior: smooth;
-    overflow: hidden;
     font-family: 'Source Code Pro';
 
 }
@@ -87,4 +86,8 @@ img {
 
 .font-asc {
     font-family: 'Amatic SC';
+}
+
+#friendlist {
+    background-color: aquamarine;
 }

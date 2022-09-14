@@ -1,25 +1,33 @@
-<section>
+<section class="row">
+
+    <div class="col-10" id="user-dasboard-col">
     <button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
         Create New Gift
     </button>
-    {{#if gifts.length}}
-    <section>
-        <h2>Your List</h2>
-        <div class="container" id="gifts-container">
-            <div class="row">
-                <div class="col-9">
-                    <div class="row">
+
+        {{#if gifts.length}}
+            <section>
+                <h2>Your List</h2>
+        
+                <div class="row d-flex" id="gifts-container">
+    
                         {{#each gifts as |gift|}}
-                        <div class="col-5">
+                        <div class="col-2">
                             {{> gift-info gift}}
                         </div>
                         {{/each}}
-                    </div>
+               
                 </div>
-            </div>
-        </div>
-    </section>
-    <script src="/javascript/delete-gift.js"></script>
-    {{/if}}
+       
+            </section>
+    
+            <script src="/javascript/delete-gift.js"></script>
+        {{/if}}
+    </div>
+
+    <div class="col-2" id="friendlist">
+        Friendslist will go here
+    </div>
+</section>
 
     {{> add-gift-modal}}
