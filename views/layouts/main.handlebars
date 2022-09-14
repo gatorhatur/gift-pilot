@@ -11,9 +11,9 @@
 </head>
 
 <body class="bg-light">
-    <div class="wrapper">
-        <header>
-            {{#if loggedIn}}
+    <div class="wrapper box">
+        {{#if loggedIn}}
+        <header class="dashboard-header">
             <div class="site-info-dashboard">
                 <h1>
                     <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
@@ -23,7 +23,9 @@
                     <button id="logout" class="btn-no-style display-6 text-secondary">Logout</button>
                 </nav>
             </div>
+        </header>
             {{else}}
+        <header class="header">
             <div class="site-info">
                 <h1>
                     <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
@@ -35,10 +37,10 @@
                     {{{ body }}}
                 </div>
             </div>
-            {{/if}}
         </header>
+        {{/if}}
         {{#if loggedIn}}
-        <main>
+        <main class="row content">
             {{{ body }}}
         </main>
         {{/if}}
