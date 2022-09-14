@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift Pilot</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC|Source+Code+Pro">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body class="bg-light">
     <div class="wrapper box">
+
         {{#if loggedIn}}
         <header class="dashboard-header">
             <div class="site-info-dashboard">
                 <h1>
-                    <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
+                    <a class="font-asc display-1 btn-no-style" href="/home">Gift Pilot</a>
                 </h1>
                 <nav>
                     <a class="btn-no-style display-6 text-secondary" href="/dashboard">Dashboard</a>
@@ -24,11 +26,11 @@
                 </nav>
             </div>
         </header>
-            {{else}}
+        {{else}}
         <header class="header">
             <div class="site-info">
                 <h1>
-                    <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
+                    <a class="font-asc display-1 btn-no-style" href="/home">Gift Pilot</a>
                 </h1>
                 <nav>
                     <a class="btn-no-style display-6" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
@@ -39,25 +41,28 @@
             </div>
         </header>
         {{/if}}
+
         {{#if loggedIn}}
         <main class="row content">
             {{{ body }}}
         </main>
         {{/if}}
-        <footer>
+
+        <footer class="display-6 font-asc">
             Gift Pilot -- Making gifting slightly less miserable
         </footer>
     </div>
 
     {{#if loggedIn}}
     {{else}}
-    {{> loginModal}}
-    {{> signupModal}}
+        {{> loginModal}}
+        {{> signupModal}}
     {{/if}}
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
