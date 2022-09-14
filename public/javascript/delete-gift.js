@@ -1,10 +1,7 @@
 async function deleteFormHandler(event) {
 	event.preventDefault();
 
-	if (!event.target.matches(".delete-gift-btn")) {
-		return;
-	}
-	const href = event.target.getAttribute("href");
+	const href = event.target.parentElement.getAttribute("href");
 	// retrieves item id
 	const id = event.target.id;
 	console.log(id);
