@@ -17,7 +17,7 @@
     margin: 0;
     background-image: url(/images/31.png);
     background-size: cover;
-    background-position: 80%;
+    background-position: center;
     background-attachment: fixed;
 }
 
@@ -27,7 +27,7 @@ main {
     background-image: url(/images/31.png);
     background-size: cover;
     background-attachment: fixed;
-    background-position: 80%;
+    background-position: center;
 }
 
 .box {
