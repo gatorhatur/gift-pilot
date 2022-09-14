@@ -35,7 +35,7 @@ router.post("/", withAuth, async (req, res) => {
     }
     get the user_id from session   
 */
-  let imgUrl;
+  let imgUrl = "/images/logo.png";
 
   if (req.body.item_url) {
     const apiUrl = `https://api.linkpreview.net/?key=${process.env.LINKPREVIEW_API_KEY}&q=${req.body.item_url}`;
@@ -78,37 +78,14 @@ router.post("/", withAuth, async (req, res) => {
     user_id: req.session.user_id,
   })
     .then((data) => {
-      if (!data.images.length) {
-        res.status(404).json({ message: "Unable to find an image" });
-        return false;
-      }
-      console.log(data.images);
-      return data.images;
+      res.status(200).json(data);
     })
     .catch((err) => {
       console.log(err);
       res
         .status(500)
         .json({ message: "Something went wrong with fetching an image" });
-      return false;
-    });
-
-  console.log(img_url);
-  if (!img_url) {
-    return;
-  }
-
-  ListItem.create({
-    item_desc: req.body.item_desc,
-    item_url: req.body.item_url,
-    item_img_url: img_url[0],
-    //user_id: req.body.user_id
-    user_id: req.session.user_id,
-  })
-    .then((createData) => res.json(createData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+      return;
     });
 });
 
