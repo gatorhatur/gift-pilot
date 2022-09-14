@@ -11,28 +11,44 @@
 </head>
 
 <body class="bg-light">
-    <div class="wrapper">
-        <header>
-            <h1>
-                <a class="display-2 btn-no-style" href="/dashboard">Gift Pilot</a>
-            </h1>
-            <nav>
-                {{#if loggedIn}}
-                <a class="btn-no-style display-6 text-secondary" href="/dashboard">Dashboard</a>
-                <button id="logout" class="btn-no-style display-6 text-secondary">Logout</button>
-                {{else}}
-                <a class="btn-no-style display-6 text-secondary" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login">Login</a>
-                {{/if}}
-            </nav>
+    <div class="wrapper box">
+        {{#if loggedIn}}
+        <header class="dashboard-header">
+            <div class="site-info-dashboard">
+                <h1>
+                    <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
+                </h1>
+                <nav>
+                    <a class="btn-no-style display-6 text-secondary" href="/dashboard">Dashboard</a>
+                    <button id="logout" class="btn-no-style display-6 text-secondary">Logout</button>
+                </nav>
+            </div>
         </header>
-        <main>
+            {{else}}
+        <header class="header">
+            <div class="site-info">
+                <h1>
+                    <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
+                </h1>
+                <nav>
+                    <a class="btn-no-style display-6" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
+                </nav>
+                <div>
+                    {{{ body }}}
+                </div>
+            </div>
+        </header>
+        {{/if}}
+        {{#if loggedIn}}
+        <main class="row content">
             {{{ body }}}
         </main>
+        {{/if}}
         <footer>
             Gift Pilot -- Making gifting slightly less miserable
         </footer>
     </div>
-    
+
     {{#if loggedIn}}
     {{else}}
     {{> loginModal}}
