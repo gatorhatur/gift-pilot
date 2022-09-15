@@ -1,44 +1,64 @@
 <section class="row">
 
-    <div class="col-10" id="user-dasboard-col">
+    <div class="col-xs-10" id="user-dasboard-col">
+        {{#if friends.length}}
+        <nav class="navbar navbar-expand-lg row d-block d-sm-none">
+            <button class="navbar-toggler mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <p>Friends List</p>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <button id="friend-btn-mobile" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#friend-modal">
+                    Add
+                </button>
+                <ul class="navbar-nav ml-auto">
+                    {{#each friends as |friend|}}
+                    <li class="nav-item">
+                        {{> friend-info friend}}
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </nav>
+        {{/if}}
+
         <button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
             Create New Gift
         </button>
 
         {{#if gifts.length}}
-            <section>
-                <h2>Your List</h2>
-        
-                <div class="row d-flex" id="gifts-container">
-    
-                        {{#each gifts as |gift|}}
-                        <div class="col-12 col-md-6 col-lg-4">
-                            {{> gift-info gift}}
-                        </div>
-                        {{/each}}
-               
+        <section>
+            <h2>Your List</h2>
+
+            <div class="row d-flex" id="gifts-container">
+
+                {{#each gifts as |gift|}}
+                <div class="col-12 col-md-6 col-lg-4">
+                    {{> gift-info gift}}
                 </div>
-       
-            </section>
-    
-            <script src="/javascript/delete-gift.js"></script>
+                {{/each}}
+
+            </div>
+
+        </section>
+
+        <script src="/javascript/delete-gift.js"></script>
         {{/if}}
     </div>
 
-    <div class="col-2" id="friendlist">
+    <div class="col-2 d-none d-md-block" id="friendlist">
         <button id="friend-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#friend-modal">
-            Add 
+            Add
         </button>
 
         {{#if friends.length}}
         <section>
             <h2>Your Friends</h2>
             <div class="row d-flex" id="friends-container">
-                    {{#each friends as |friend|}}
-                    <div class="list">
-                        {{> friend-info friend}}
-                    </div>
-                    {{/each}}
+                {{#each friends as |friend|}}
+                <div class="list">
+                    {{> friend-info friend}}
+                </div>
+                {{/each}}
             </div>
         </section>
         {{/if}}
