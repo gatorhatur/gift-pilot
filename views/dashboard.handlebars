@@ -34,11 +34,13 @@
         <section>
             <h2>Your Friends</h2>
             <div class="row d-flex" id="friends-container">
-                    {{#each friends as |friend|}}
                     <div class="list">
+                        <ul class="list-group">
+                    {{#each friends as |friend|}}
                         {{> friend-info friend}}
-                    </div>
                     {{/each}}
+                 </ul>
+                    </div>
             </div>
         </section>
         {{/if}}
