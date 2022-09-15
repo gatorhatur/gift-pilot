@@ -15,7 +15,7 @@
 
 .dashboard-header {
     margin: 0;
-    border-bottom: var(--decorative-color) solid 5px;
+    border-bottom: var(--primary-color) solid 5px;
 }
 
 main {
@@ -46,6 +46,12 @@ main {
     text-decoration: none;
     color: var(--primary-text-color);
 }
+
+.site-info-dashboard a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
 
 #login-modal-alert {
     margin-top: 20px;
@@ -79,11 +85,21 @@ img {
 }
 
 #friendlist {
-    background-color: aquamarine;
+
 }
 
 #friend-btn, #new-gift-btn {
     max-width: 100%;
     height: auto;
     text-size-adjust:inherit;
+}
+
+.btn-primary {
+    background-color: var(--decorative-color);
+    color: var(--primary-text-color);
+    border: var(--decorative-color) solid 1px;
+}
+
+.border-danger {
+    border-color: var(--primary-color);
 }
