@@ -5,45 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift Pilot</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC|Source+Code+Pro">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
+    <script src="https://kit.fontawesome.com/a547d894e4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body class="bg-light">
-    <div class="wrapper">
-        <header>
-            <div class="site-info">
+    <div class="wrapper box">
+
+        {{#if loggedIn}}
+        <header class="dashboard-header mb-3 px-3">
+            <div class="site-info-dashboard d-flex justify-content-between align-items-center">
                 <h1>
-                    <a class="display-2 btn-no-style" href="/home">Gift Pilot</a>
+                    <a class="font-asc display-1 text-decoration-none" href="/home">Gift Pilot</a>
                 </h1>
                 <nav>
-                    {{#if loggedIn}}
-                    <a class="btn-no-style display-6 text-secondary" href="/dashboard">Dashboard</a>
-                    <button id="logout" class="btn-no-style display-6 text-secondary">Logout</button>
-                    {{else}}
-                    <a class="btn-no-style display-6 text-secondary" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
-                    {{/if}}
+                    <a class="btn-no-style display-6 text-decoration-none" href="/dashboard">Dashboard</a>
+                    <a href="" id="logout" class="btn-no-style display-6">Logout</a>
                 </nav>
-                <div>
+            </div>
+        </header>
+        {{else}}
+        <header class="header">
+            <div class="site-info">
+                
+                <div class="bg-light border border-danger rounded p-2 d-flex justify-content-center">
+                    <div>
+                        <img src="/images/logo.png" alt="Gift wearing Aviators"/>
+                         <a class="btn-no-style display-6" data-bs-toggle="modal" data-bs-target="#login-modal" href="/login" id="login">Login</a>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center row">
+                        <a class="col-12 font-asc w-100 display-1 btn-no-style" href="/home">Gift Pilot</a>
                     {{{ body }}}
+                    </div>
                 </div>
             </div>
         </header>
-        <footer>
+        {{/if}}
+
+        {{#if loggedIn}}
+        <main class="row content px-3">
+            {{{ body }}}
+        </main>
+        {{/if}}
+
+        <footer class="display-6 font-asc">
             Gift Pilot -- Making gifting slightly less miserable
         </footer>
     </div>
-    
+
     {{#if loggedIn}}
     {{else}}
-    {{> loginModal}}
-    {{> signupModal}}
+        {{> loginModal}}
+        {{> signupModal}}
     {{/if}}
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>

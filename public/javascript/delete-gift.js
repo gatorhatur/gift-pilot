@@ -1,9 +1,10 @@
 async function deleteFormHandler(event) {
 	event.preventDefault();
 
-    const href = event.target.parentElement.getAttribute("href")
+	const href = event.target.parentElement.getAttribute("href");
 	// retrieves item id
 	const id = event.target.id;
+	console.log(id);
 
 	const deleteBtn = document.getElementById(id);
 	console.log(deleteBtn);
@@ -14,13 +15,15 @@ async function deleteFormHandler(event) {
 		});
 
 		if (response.ok) {
-			document.location.replace('/dashboard/');
+			document.location.replace("/dashboard/");
 		} else {
-			alert(response.statusText);
+			response.statusText;
 		}
-    } else {
-        window.open(href)
-    }
+	} else if (href.includes("null")) {
+		return
+	} else {
+		window.open(href)
+	}
 }
 
 document

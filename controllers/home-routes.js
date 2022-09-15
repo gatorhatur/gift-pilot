@@ -26,7 +26,7 @@ router.get("/dashboard", withAuth, (req, res) => {
   })
     .then((data) => {
       const user = data.get({ plain: true });
-      res.render("dashboard", { user });
+      res.render("dashboard", { user, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -34,8 +34,9 @@ router.get("/dashboard", withAuth, (req, res) => {
     });
 });
 router.get("/:id", withAuth, (req, res) => {
+  console.log(req.params.id);
   //sees if user is sneakily trying to view whos getting their gifts
-  if (req.session.user_id === req.params.id) {
+  if (req.session.user_id == req.params.id) {
     res.redirect("/dashboard");
   }
   //includes list item, purchase data, and user data for each purchase
@@ -62,7 +63,7 @@ router.get("/:id", withAuth, (req, res) => {
       const user = dbUserData.get({ plain: true });
 
       //sends a purchases variable through to conditionally render purchase data
-      res.render("user", { user, purchases: true });
+      res.render("user", { user, purchases: true, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

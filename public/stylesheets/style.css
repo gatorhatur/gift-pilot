@@ -1,24 +1,72 @@
 * {
     padding: 0;
     scroll-behavior: smooth;
+    font-family: 'Source Code Pro';
+
+}
+
+.header {
+    background-color: #000;
+    margin: 0;
+    background-image: url(/images/35.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+
+
+.dashboard-header {
+    background-color: #000;
+    margin: 0;
+/*    background-image: url(/images/35.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;*/
+}
+
+main {
+/*    background-color: #000;*/
+    margin: 0;
+/*    background-image: url(/images/35.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;*/
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+
+.box .row.content {
+    flex: 1 1 auto;
 }
 
 .site-info {
     position: absolute;
-    top: 45vw;
+    top: 35vh;
     width: 100%;
     text-align: center;
     margin: auto;
     padding: 40px 250px;
+    color: #fff;
 }
 
-.site-info h1 a {
+.site-info a {
     text-decoration: none;
-    color: black;
+    color: #fff;
 }
 
 #login-modal-alert {
     margin-top: 20px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    color: #000;
 }
 
 a {
@@ -30,3 +78,39 @@ img {
     height: auto;
 }
 
+.font-scp {
+    font-family: 'Source Code Pro';
+}
+
+.font-asc {
+    font-family: 'Amatic SC';
+}
+
+#friendlist {
+    background-color: aquamarine;
+}
+
+#friend-btn, #new-gift-btn {
+    max-width: 100%;
+    height: auto;
+    text-size-adjust:inherit;
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        text-align: center;
+    }
+
+    .navbar {
+        width: 100vw;
+        padding-left: 23px;
+    }
+
+    #friend-btn-mobile {
+        width: 100%;
+    }
+
+    #new-gift-btn {
+        width: 100%;
+    }
+}

@@ -15,15 +15,15 @@ User.belongsToMany(User, {
 User.belongsToMany(User, {
   through: FriendList,
   as: "following",
-  foreignKey: "friend_id",
+  foreignKey: "user_id",
 });
 
-// friendlist belongs to a specific user
+// // friendlist belongs to a specific user
 FriendList.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-// user many have many friends via friendlist table
+// // user many have many friends via friendlist table
 User.hasMany(FriendList, {
   foreignKey: "user_id",
 });
