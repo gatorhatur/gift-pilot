@@ -23,9 +23,9 @@
             Create New Gift
         </button>
 
-        {{#if gifts.length}}
         <section>
-            <h2>Your List</h2>
+            <h2>Your List ({{username}})</h2>
+        {{#if gifts.length}}
 
             <div class="row d-flex" id="gifts-container">
 
@@ -37,10 +37,10 @@
 
             </div>
 
-        </section>
 
         <script src="/javascript/delete-gift.js"></script>
         {{/if}}
+        </section>
     </div>
 
     <div class="col-2 d-none d-md-block" id="friendlist">

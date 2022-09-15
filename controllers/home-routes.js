@@ -25,6 +25,7 @@ router.get("/dashboard", withAuth, (req, res) => {
     include: [{ model: FriendList }, { model: ListItem }],
   })
     .then((data) => {
+      console.log("dddd" + data);
       const user = data.get({ plain: true });
       res.render("dashboard", { user, loggedIn: true });
     })
