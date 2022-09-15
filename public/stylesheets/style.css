@@ -12,7 +12,9 @@
     height: 100vh;
 }
 
-
+.bg-light {
+    background-color: #FDF6E4 !important;
+}
 
 .dashboard-header {
     margin: 0;
