@@ -7,13 +7,13 @@ const Purchase = require("./Purchase");
 
 // user references back to itself via friendlist table
 User.belongsToMany(User, {
-  through: FriendList,
+  through: { model: FriendList, unique: false },
   as: "followers",
   foreignKey: "friend_id",
 });
 
 User.belongsToMany(User, {
-  through: FriendList,
+  through: { model: FriendList, unique: false },
   as: "following",
   foreignKey: "user_id",
 });
