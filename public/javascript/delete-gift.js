@@ -17,10 +17,12 @@ async function deleteFormHandler(event) {
 		if (response.ok) {
 			document.location.replace("/dashboard/");
 		} else {
-			alert(response.statusText);
+			response.statusText;
 		}
+	} else if (href.includes("null")) {
+		return
 	} else {
-		window.open(href);
+		window.open(href)
 	}
 }
 

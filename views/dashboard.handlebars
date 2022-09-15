@@ -1,9 +1,9 @@
 <section class="row">
 
     <div class="col-10" id="user-dasboard-col">
-    <button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
-        Create New Gift
-    </button>
+        <button id="new-gift-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#gift-modal">
+            Create New Gift
+        </button>
 
         {{#if gifts.length}}
             <section>
@@ -12,7 +12,9 @@
                 <div class="row d-flex" id="gifts-container">
     
                         {{#each gifts as |gift|}}
+
                         <div class="col-lg-2 col-md-4 mt-3">
+
                             {{> gift-info gift}}
                         </div>
                         {{/each}}
@@ -26,9 +28,9 @@
     </div>
 
     <div class="col-2" id="friendlist">
-    <button id="friend-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#friend-modal">
-        Add Friend
-    </button>
+        <button id="friend-btn" data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#friend-modal">
+            Add 
+        </button>
 
         {{#if friends.length}}
         <section>

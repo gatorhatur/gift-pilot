@@ -81,3 +81,9 @@ img {
 #friendlist {
     background-color: aquamarine;
 }
+
+#friend-btn, #new-gift-btn {
+    max-width: 100%;
+    height: auto;
+    text-size-adjust:inherit;
+}
