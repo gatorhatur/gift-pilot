@@ -111,9 +111,8 @@ img {
         text-align: center;
     }
 
-    .navbar {
-        width: 100vw;
-        padding-left: 23px;
+    .row {
+        --bs-gutter-x: 0 !important;
     }
 
     #friend-btn-mobile {
