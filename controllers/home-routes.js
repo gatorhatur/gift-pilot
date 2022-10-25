@@ -19,21 +19,7 @@ router.get("/home", (req, res) => {
 });
 module.exports = router;
 //withAuth redirects unauthorized user to login page
-router.get("/dashboard", withAuth, (req, res) => {
-  User.findOne({
-    where: { id: req.session.user_id },
-    include: [{ model: FriendList }, { model: ListItem }],
-  })
-    .then((data) => {
-      console.log("dddd" + data);
-      const user = data.get({ plain: true });
-      res.render("dashboard", { user, loggedIn: true });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
 router.get("/:id", withAuth, (req, res) => {
   console.log(req.params.id);
   //sees if user is sneakily trying to view whos getting their gifts

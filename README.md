@@ -1,7 +1,7 @@
 # Gift Pilot -- making gifting slightly less miserable
 
 ## Purpose
-
+![gift pilot screenshot](./giftpilot.png)
 As a thoughtful person, with crippling social anxiety, I want to make sure I am providing gifts to my friends that they have not already received and make sure they don't give me duplicate presents.
 
 With Gift Pilot, users can expect to create a list of the items they desire for any occasion. Users can also expect to be able to look at the lists of their friends and notate that they have purchased a gift on the list while keeping it a secret from the recipient. How thoughtful!
