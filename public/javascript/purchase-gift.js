@@ -11,7 +11,13 @@ async function submitPurchaseHandler(event) {
         if (response.ok) {
           document.location.reload();
         } else {
-          alert(response.statusText);
+          document.getElementById("error-modal-text").textContent =
+            response.statusText;
+          let myModal = new bootstrap.Modal(
+            document.getElementById("error-modal"),
+            {}
+          );
+          myModal.show();
         }
       }
     }

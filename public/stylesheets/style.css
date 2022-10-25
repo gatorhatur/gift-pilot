@@ -2,36 +2,27 @@
     padding: 0;
     scroll-behavior: smooth;
     font-family: 'Source Code Pro';
-
+    --decorative-color: #00fdc8;
+    --primary-color: #ef2f20;
+    --primary-text-color: #212121;
 }
 
 .header {
-    background-color: #000;
     margin: 0;
-    background-image: url(/images/35.png);
-    background-size: cover;
-    background-position: center;
     height: 100vh;
 }
 
-
+.bg-light {
+    background-color: #EDF8FF !important;
+}
 
 .dashboard-header {
-    background-color: #000;
     margin: 0;
-/*    background-image: url(/images/35.png);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;*/
+    border-bottom: var(--primary-color) solid 5px;
 }
 
 main {
-/*    background-color: #000;*/
     margin: 0;
-/*    background-image: url(/images/35.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;*/
 }
 
 .box {
@@ -46,17 +37,22 @@ main {
 
 .site-info {
     position: absolute;
-    top: 35vh;
+    top: 25vh;
     width: 100%;
     text-align: center;
     margin: auto;
-    padding: 40px 250px;
-    color: #fff;
+    padding: 40px 150px;
+    color: var(--primary-text-color)
 }
 
-.site-info a {
+    .site-info a {
+        text-decoration: none;
+        color: var(--primary-text-color);
+    }
+
+.site-info-dashboard a {
     text-decoration: none;
-    color: #fff;
+    color: var(--primary-text-color);
 }
 
 #login-modal-alert {
@@ -66,7 +62,8 @@ main {
 footer {
     width: 100%;
     text-align: center;
-    color: #000;
+    color: var(--primary-text-color);
+    font-weight: bold;
 }
 
 a {
@@ -87,7 +84,7 @@ img {
 }
 
 #friendlist {
-    background-color: aquamarine;
+
 }
 
 #friend-btn, #new-gift-btn {
@@ -96,14 +93,28 @@ img {
     text-size-adjust:inherit;
 }
 
+.btn-primary {
+    background-color: var(--decorative-color);
+    color: var(--primary-text-color);
+    border: var(--decorative-color) solid 1px;
+}
+
+.border-danger {
+    border-color: var(--primary-color);
+}
+
+.list-group-item a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
 @media (max-width: 768px) {
     .dashboard-header {
         text-align: center;
     }
 
-    .navbar {
-        width: 100vw;
-        padding-left: 23px;
+    .row {
+        --bs-gutter-x: 0 !important;
     }
 
     #friend-btn-mobile {
